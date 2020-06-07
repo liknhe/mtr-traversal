@@ -1,0 +1,119 @@
+Time taken to Inistialise: 5
+
+MTR Information Centre
+
+Enter the number associated with your chosen menu option.
+1: List all termini in the MTR network
+2: List all stations in a line in the MTR network
+3: List all lines that are directly connected to a line
+4: Find a path between two stations
+5: Exit this application
+
+1
+Train Line: Island Line
+Termini: Kennedy Town, Chai Wan
+
+Train Line: Kwun Tong Line
+Termini: Whampoa, Tiu Keng Leng
+
+Train Line: East Rail Line
+Termini: Lo Wu, Hung Hom
+
+Train Line: Disneyland Resort Line
+Termini: Sunny Bay, Disneyland Resort
+
+Train Line: Tsuen Wan Line
+Termini: Tsuen Wan, Central
+
+Train Line: West Rail Line
+Termini: Tuen Mun, Hung Hom
+
+Train Line: South Island Line
+Termini: South Horizons, Admiralty
+
+Train Line: Airport Express
+Termini: AsiaWorld-Expo, Hong Kong
+
+Train Line: Walkable
+Termini: Hong Kong, Central
+
+Train Line: Ma On Shan Line
+Termini: Tai Wai, Wu Kai Sha
+
+Train Line: Tseung Kwan O Line
+Termini: North Point, Po Lam
+
+Train Line: Tung Chung Line
+Termini: Tung Chung, Hong Kong
+
+Elapsed Time: 1
+
+MTR Information Centre
+
+Enter the number associated with your chosen menu option.
+1: List all termini in the MTR network
+2: List all stations in a line in the MTR network
+3: List all lines that are directly connected to a line
+4: Find a path between two stations
+5: Exit this application
+
+2
+Lists all stations in a line...
+Enter the name of the line you'd like to view:
+Tung Chung Line
+Tung Chung Line: Tung Chung <-> Sunny Bay <-> Tsing Yi <-> Kowloon <-> Hong Kong
+Elapsed Time: 0
+
+MTR Information Centre
+
+Enter the number associated with your chosen menu option.
+1: List all termini in the MTR network
+2: List all stations in a line in the MTR network
+3: List all lines that are directly connected to a line
+4: Find a path between two stations
+5: Exit this application
+
+3
+Lists all directly connected lines...
+Enter the name of the required line:
+Island Line
+Elapsed Time: 2
+Directly Connected Lines: 
+
+Tsuen Wan Line
+South Island Line
+Walkable
+Tseung Kwan O Line
+
+MTR Information Centre
+
+Enter the number associated with your chosen menu option.
+1: List all termini in the MTR network
+2: List all stations in a line in the MTR network
+3: List all lines that are directly connected to a line
+4: Find a path between two stations
+5: Exit this application
+
+4
+Finds a path between two stations...
+Enter the name of the start station:
+Sunny Bay
+Enter the name of the end station:
+Lok Fu  
+Elapsed Time: 3
+Sunny Bay -> Tsing Yi -> Kowloon -> Hong Kong -> Central -> Admiralty -> Wan Chai 
+-> Causeway Bay -> Tin Hau -> Fortress Hill -> North Point -> Quarry Bay -> Yau Tong 
+-> Lam Tin -> Kwun Tong -> Ngau Tau Kok -> Kowloon Bay -> Choi Hung -> Diamond Hill 
+-> Wong Tai Sin -> Lok Fu
+
+MTR Information Centre
+
+Enter the number associated with your chosen menu option.
+1: List all termini in the MTR network
+2: List all stations in a line in the MTR network
+3: List all lines that are directly connected to a line
+4: Find a path between two stations
+5: Exit this application
+
+5
+Goodbye!
