@@ -17,9 +17,9 @@ import java.util.Map;
 public class MetroLine {
 
 	//Name of Metro Line
-	private String name;
+	private final String name;
 	//list of metro station
-	private List<MetroStation> metroLine;
+	private final List<MetroStation> metroLine;
 	//first station in line
 	private MetroStation firstStation;
 	//last station in line
@@ -28,9 +28,9 @@ public class MetroLine {
 	private int size;
 
 	// Storing connecting station with lines
-	private Map<String, MetroLine> connections;
+	private final Map<String, MetroLine> connections;
 	// Storing connecting station with lines
-	private Map<String, MetroStation> stations;
+	private final Map<String, MetroStation> stations;
 
 	/**
 	 * Constructs a new {@link MetroLine} with a specified string line name
@@ -42,9 +42,9 @@ public class MetroLine {
 		size = 0;
 		lastStation = null;
 		firstStation = null;
-		metroLine = new LinkedList<MetroStation>();
-		connections = new HashMap<String, MetroLine>();
-		stations = new HashMap<String, MetroStation>();
+		metroLine = new LinkedList<>();
+		connections = new HashMap<>();
+		stations = new HashMap<>();
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class MetroLine {
 	 */
 	public void addConnectingStations(){
 		Iterator<MetroStation> stationItr = iterator();
-		MetroStation prev = null;
+		MetroStation prev;
 		MetroStation next = null;
 		
 		// adds all adjacent stations of each station
@@ -130,18 +130,16 @@ public class MetroLine {
 			}
 			while(stationItr.hasNext()) {
 				prev = next;
-				if(stationItr.hasNext()) {
-					next = stationItr.next();
-					prev.addNextStation(next);
-					next.addNextStation(prev);
-				}
+				next = stationItr.next();
+				prev.addNextStation(next);
+				next.addNextStation(prev);
 			}
 		}
 	}	
 	
 	/**
 	 * Method to connect lines together
-	 * @param a map connecting line string with line object
+	 * @param map connecting line string with line object
 	 */
 	public void addConnections(Map<String, MetroLine> map){
 		connections.putAll(map);

@@ -20,23 +20,23 @@ import metro.MetroSystem;
  */
 public class WorkingController implements Controller {
 
-	private MetroSystem collection;
+	private final MetroSystem collection;
 
 	public WorkingController(String path) {
 
 		long startTime = new Date().getTime();
 		collection = new MetroSystem();
 
-		String sentence = "";
+		String sentence;
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			// While there are still lines left to read in the csv file
 			while ((sentence = br.readLine()) != null) {
-				String temp[] = sentence.split(",");
+				String[] temp = sentence.split(",");
 				MetroLine line = new MetroLine(temp[0]);
 
 				// Add each station in the current line to the collection
 				for (int i = 1; i < temp.length; i++) {
-					MetroStation station = null;
+					MetroStation station;
 
 					if (collection.getStations().containsKey(temp[i])) {
 						station = collection.getStation(temp[i]);
@@ -71,7 +71,7 @@ public class WorkingController implements Controller {
 
 		long endTime = new Date().getTime();
 		long timeElapsed = endTime - startTime;
-		System.out.println("Time taken to Inistialise: " + timeElapsed);
+		System.out.println("Time taken to Initialise: " + timeElapsed);
 	}
 
 	/**
@@ -82,22 +82,22 @@ public class WorkingController implements Controller {
 	public String listAllTermini() {
 		long startTime = (new Date().getTime());
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		// O(n)
 		// Add the first and last element of the Line and add it to the StringBuffer
 		for (String name : collection.getLines().keySet()) {
 			MetroLine temp = collection.getOneLine(name); 					// O(1)
-			sb.append("Train Line: " + temp.toString() + "\n"); 			// O(1)
-			sb.append("Termini: " + temp.getFirst().toString() + ", "); 	// O(1)
-			sb.append(temp.getLast().toString() + "\n"); 				// O(1)
+			sb.append("Train Line: ").append(temp.toString()).append("\n"); 			// O(1)
+			sb.append("Termini: ").append(temp.getFirst().toString()).append(", "); 	// O(1)
+			sb.append(temp.getLast().toString()).append("\n"); 				// O(1)
 			sb.append("\n"); 											// O(1)
 		}
 		
 		long endTime = (new Date().getTime());
 		long elapsedTime = endTime - startTime;
 
-		sb.append("Elapsed Time: " + elapsedTime);
+		sb.append("Elapsed Time: ").append(elapsedTime);
 		return sb.toString();
 	}
 
@@ -109,13 +109,13 @@ public class WorkingController implements Controller {
 	@Override
 	public String listStationsInLine(String line) {
 		long startTime = (new Date().getTime());
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		MetroLine trainLine = collection.getOneLine(line);
 		if (trainLine == null) {
 			return "\nNot A Line";
 		}
-		sb.append(trainLine.toString() + ": ");
+		sb.append(trainLine).append(": ");
 		Iterator<MetroStation> stationIterator = trainLine.iterator();
 
 		// O(n)
@@ -125,14 +125,14 @@ public class WorkingController implements Controller {
 			if (!stationIterator.hasNext()) { 				// O(1)
 				sb.append(temp.toString()); 					// O(1)
 			} else {
-				sb.append(temp.toString() + " <-> "); 		// O(1)
+				sb.append(temp.toString()).append(" <-> "); 		// O(1)
 			}
 		}
 
 		long endTime = (new Date().getTime());
 		long elapsedTime = endTime - startTime;
 
-		return sb.toString() + "\nElapsed Time: " + elapsedTime;
+		return sb + "\nElapsed Time: " + elapsedTime;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class WorkingController implements Controller {
 	public String listAllDirectlyConnectedLines(String line) {
 		long startTime = (new Date().getTime());
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		try {
 			sb.append("Directly Connected Lines: \n");
 			// Get desired line from the collection
@@ -154,7 +154,7 @@ public class WorkingController implements Controller {
 			for (String name : trainLine.getConnections().keySet()) {
 				if (!name.equals(line)) {
 					//Add all the lines to the StringBuffer that are not the current line
-					sb.append("\n" + name); 					// O(1)
+					sb.append("\n").append(name); 					// O(1)
 				}
 			}
 		} catch (Exception e) {
@@ -183,11 +183,11 @@ public class WorkingController implements Controller {
 		}
 
 		long startTime = (new Date().getTime());
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 
 		
-		Stack<MetroStation> path = new Stack<MetroStation>();
-		Stack<MetroStation> reversedPath = new Stack<MetroStation>();
+		Stack<MetroStation> path = new Stack<>();
+		Stack<MetroStation> reversedPath = new Stack<>();
 
 		MetroStation end = collection.getStation(stationB);
 		MetroStation start = collection.getStation(stationA);
@@ -213,7 +213,7 @@ public class WorkingController implements Controller {
 				if (potential.element().isVisited()) {
 					potential.remove(); 					// O(1)
 				} else {
-					//If there first element in the potential station queue has not yet been visited
+					//If the first element in the potential station queue has not yet been visited
 					//Update the current station to the next potential station and remove from the list.
 					current = potential.remove(); 			// O(1)
 					path.push(current); 					// O(1)
@@ -229,17 +229,17 @@ public class WorkingController implements Controller {
 			reversedPath.push(path.pop());
 		}
 
-		sb.append(path.pop().toString() + " -> "); 			// O(1)
+		sb.append(path.pop().toString()).append(" -> "); 			// O(1)
 
 		// O(n)
-		//Add All of the path to the StringBuffer
+		//Add all the path to the StringBuffer
 		while (!reversedPath.isEmpty()) {
 			MetroStation station = reversedPath.pop();
 
 			if (reversedPath.isEmpty()) {
 				sb.append(station.toString()); 				// O(1)
 			} else {
-				sb.append(station.toString() + " -> "); 		// O(1)
+				sb.append(station.toString()).append(" -> "); 		// O(1)
 			}
 		}
 		

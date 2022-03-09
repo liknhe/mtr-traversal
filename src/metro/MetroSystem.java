@@ -19,13 +19,13 @@ public class MetroSystem {
 	private Map<String, MetroStation> stations;
 
 	public MetroSystem(){
-		lines = new HashMap<String, MetroLine>();
-		stations = new HashMap<String, MetroStation>();
+		lines = new HashMap<>();
+		stations = new HashMap<>();
 	}
 
 	/**
 	 * Adds a {@link MetroLine} with a specified string line name to the map as a key
-	 * @param name of the Line
+	 * @param
 	 * @see MetroLine
 	 */
 	public void addLine(MetroLine line) {
@@ -54,7 +54,6 @@ public class MetroSystem {
 	/**
 	 * method to get a station name from the map
 	 * @param station name of the station
-	 * @return name of the {@link MetroStation}
 	 * @see MetroStation
 	 */
 	public void addStation(MetroStation station){

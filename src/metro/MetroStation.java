@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Queue;
 
 /**
- * A node to represent a metro statin within the MTR.
+ * A node to represent a metro station within the MTR.
  * Additionally, it also holds which line/s this station is on and all connecting stations across the map
  * 
  * @author Li He, Hannah Miller, Ben Withington
@@ -20,7 +20,7 @@ public class MetroStation {
 	private String name;
 	//Map to link station name with line
 	private Map<String, MetroLine> lines;
-	//array list of a adjacent Station objects
+	//array list of adjacent Station objects
 	private ArrayList<MetroStation> connectingStations;
 	//queue of the current stations adjacent stations
 	private Queue<MetroStation> potentialStations;
@@ -134,13 +134,13 @@ public class MetroStation {
 	}
 
 	/**
-	 * Method to compare an obj to see if its a station
-	 * @param obj to see if its an instance of a station
+	 * Method to compare an obj to see if it is a station
+	 * @param obj to see if it is an instance of a station
 	 * @return if station name in constructor is equal to the parameter returns true
 	 * @return if station name in constructor is not equal to parameter returns false
 	 * @return if the obj in parameter is not an instance of a station returns false
-	 * @return if station name doesnt exist but station other does then return false
-	 * @return if station name doesnt equal station other return false
+	 * @return if station name doesn't exist but station other does then return false
+	 * @return if station name doesn't equal station other return false
 	  
 	 */
 	@Override
